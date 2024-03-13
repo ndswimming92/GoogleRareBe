@@ -1,6 +1,13 @@
-﻿namespace GoogleRareBe.API
+﻿using GoogleRareBe.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace GoogleRareBe.API
 {
-    public class ReactionsAPI
+    public static class ReactionsAPI
     {
+        public static void Map(WebApplication app)
+        {
+
+        }
     }
 }

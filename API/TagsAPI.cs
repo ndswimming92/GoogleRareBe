@@ -1,6 +1,14 @@
-﻿namespace GoogleRareBe.API
+﻿using GoogleRareBe.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace GoogleRareBe.API
 {
-    public class TagsAPI
+    public static class TagsAPI
     {
+        public static void Map(WebApplication app)
+        {
+
+        }
+
     }
 }
