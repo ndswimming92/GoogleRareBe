@@ -21,6 +21,10 @@
 
   <ItemGroup>
     <Folder Include="DTO\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Data\" />
+  </ItemGroup>
 </Project>
