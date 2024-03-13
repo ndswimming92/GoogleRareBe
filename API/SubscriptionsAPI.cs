@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoogleRareBe.API
 {
-    public static class SubscriptionAPI
+    public static class SubscriptionsAPI
     {
         public static void Map(WebApplication app)
         {
