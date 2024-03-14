@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using GoogleRareBe;
 using GoogleRareBe.API;
+using Microsoft.AspNetCore.Components.Forms;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,13 +37,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 CategoriesAPI.Map(app);
+CategoriesAPI.Map(app);
 CommentsAPI.Map(app);
 PostsAPI.Map(app);
 RareUsersAPI.Map(app);
 ReactionsAPI.Map(app);
 SubscriptionsAPI.Map(app);
 TagsAPI.Map(app);
-
 
 app.Run();
 
