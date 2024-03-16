@@ -1,4 +1,4 @@
-﻿namespace Google_BE.Models
+﻿namespace GoogleRareBe.Models
 {
     public class Post
     {
