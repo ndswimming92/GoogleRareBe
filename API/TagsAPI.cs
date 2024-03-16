@@ -17,6 +17,11 @@ namespace GoogleRareBe.API
                 return Results.Ok();
             });
 
+            // Get a Tag
+            app.MapGet("/api/getTags", (GoogleRareBeDbContext db) => {
+                return db.Tags.ToList();
+            });
+
         }
 
     }
