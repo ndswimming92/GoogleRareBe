@@ -1,5 +1,7 @@
 ﻿using System;
 using GoogleRareBe.Models;
+
+
 namespace GoogleRareBe.Data
 {
 	public class CategoryData
