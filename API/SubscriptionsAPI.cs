@@ -14,7 +14,17 @@ namespace GoogleRareBe.API
                 return Results.Created($"/api/subscriptions/{subscription.Id}", subscription);
             });
 
-
+            app.MapDelete("/api/deleteSubscriptions/{id}", (GoogleRareBeDbContext db, int id) =>
+            {
+                Subscription deleteSub = db.Subscriptions.SingleOrDefault(s => s.Id == id);
+                if (deleteSub != null)
+                {
+                    db.Subscriptions.Remove(deleteSub);
+                    db.SaveChanges();
+                    return Results.NoContent();
+                }
+                return Results.BadRequest("Subscription not found");
+            });
 
         }
     }
