@@ -10,11 +10,11 @@ namespace GoogleRareBe.API
             // Endpoints
 
             // Add Tag
-            app.MapPost("/api/addTag", (GoogleRareBeDbContext db, Tag addTag) =>
+            app.MapPost("/api/createTag", (GoogleRareBeDbContext db, Tag createTag) =>
             {
-                db.Tags.Add(addTag);
+                db.Tags.Add(createTag);
                 db.SaveChanges();
-                return Results.Created($"/api/addTag/{addTag.Id}", addTag);
+                return Results.Created($"/api/addTag/{createTag.Id}", createTag);
             });
 
             // Get a Tag
