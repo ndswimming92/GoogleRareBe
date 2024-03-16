@@ -4,7 +4,7 @@ namespace GoogleRareBe.Data
 {
 	public class PostsData
 	{
-		public static List<Post> posts = new List<Post>
+		public static List<Post> Posts = new List<Post>
 		{
 			new Post
 			{
