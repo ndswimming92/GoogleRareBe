@@ -28,7 +28,6 @@ namespace GoogleRareBe.API
                 updateUser.Bio = users.Bio;
                 updateUser.PublicImageUrl = users.PublicImageUrl;
                 updateUser.email = users.email;
-                updateUser.CreatedOn = modifyDate;
                 updateUser.Active = users.Active;
                 updateUser.IsStaff = users.IsStaff;
                 
