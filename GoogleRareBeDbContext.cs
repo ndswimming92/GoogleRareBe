@@ -30,6 +30,7 @@ namespace GoogleRareBe
             modelBuilder.Entity<Reaction>().HasData(ReactionsData.Reactions);
             modelBuilder.Entity<Subscription>().HasData(SubscriptionData.Subscriptions);
             modelBuilder.Entity<Tag>().HasData(TagsData.Tags);
+            modelBuilder.Entity<PostTag>().HasData(PostTagData.PostTags);
         }
     }
 }
