@@ -8,21 +8,21 @@ namespace GoogleRareBe.API
         public static void Map(WebApplication app)
         {
             // Create Category
-            app.MapPost("/api/categories", (GoogleRareBeDbContext db, Category newCategory) =>
+            app.MapPost("/api/createCategories", (GoogleRareBeDbContext db, Category newCategory) =>
             {
                 db.Categories.Add(newCategory);
                 db.SaveChanges();
-                return Results.Created($"/api/categories/{newCategory.Id}", newCategory);
+                return Results.Created($"/api/createCategories/{newCategory.Id}", newCategory);
             });
 
             // Read Category
-            app.MapGet("/api/categories", (GoogleRareBeDbContext db) =>
+            app.MapGet("/api/readCategories", (GoogleRareBeDbContext db) =>
             {
                 return db.Categories.ToList();
             });
 
             // Update Category
-            app.MapPut("/api/categories/{id}", (GoogleRareBeDbContext db, int id, Category category) =>
+            app.MapPut("/api/updateCategories/{id}", (GoogleRareBeDbContext db, int id, Category category) =>
             {
                 Category categoryToUpdate = db.Categories.SingleOrDefault(category => category.Id == id);
                 if (categoryToUpdate == null)
@@ -36,7 +36,7 @@ namespace GoogleRareBe.API
             });
 
             // Delete Category
-            app.MapDelete("/api/categories/{id}", (GoogleRareBeDbContext db, int id) =>
+            app.MapDelete("/api/deleteCategories/{id}", (GoogleRareBeDbContext db, int id) =>
             {
                 Category categoryToDelete = db.Categories.SingleOrDefault(category => category.Id == id);
                 if (categoryToDelete == null)
