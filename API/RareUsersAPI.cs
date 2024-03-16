@@ -17,6 +17,7 @@ namespace GoogleRareBe.API
 
             app.MapPut("api/updateUser/{id}", (GoogleRareBeDbContext db, int id, User users) =>
             {
+                DateTime modifyDate = DateTime.Now;
                 User updateUser = db.Users.SingleOrDefault(users => users.Id == id);
                 if (updateUser == null)
                 {
@@ -27,7 +28,6 @@ namespace GoogleRareBe.API
                 updateUser.Bio = users.Bio;
                 updateUser.PublicImageUrl = users.PublicImageUrl;
                 updateUser.email = users.email;
-                updateUser.CreatedOn = users.CreatedOn;
                 updateUser.Active = users.Active;
                 updateUser.IsStaff = users.IsStaff;
                 
@@ -45,6 +45,11 @@ namespace GoogleRareBe.API
                     return Results.NotFound();
                 }
                 return Results.Ok(userDetails);
+            });
+
+            app.MapGet("api/users", (GoogleRareBeDbContext db) =>
+            {
+                return db.Users.ToList();
             });
         
         }
