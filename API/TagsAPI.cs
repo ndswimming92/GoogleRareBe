@@ -22,7 +22,7 @@ namespace GoogleRareBe.API
                 return db.Tags.ToList();
             });
 
-            // 
+            // Updating a Tag
             app.MapPatch("/api/updateTags/{tagId}", (GoogleRareBeDbContext db, int tagId, Tag updateTag) =>
             {
                 var editedTag = db.Tags.FirstOrDefault(t => t.Id == tagId);
@@ -40,7 +40,20 @@ namespace GoogleRareBe.API
             });
 
             // Deleting a Tag
-
+            app.MapDelete("/api/deleteTags/{tagId}", (GoogleRareBeDbContext db, int tagId) =>
+            {
+                try
+                {
+                    var tagToDelete = db.Tags.FirstOrDefault(t => t.Id == tagId);
+                    db.Tags.Remove(tagToDelete);
+                    db.SaveChanges();
+                    return Results.Ok();
+                }
+                catch
+                {
+                    return Results.NotFound();
+                }
+            });
         }
 
     }

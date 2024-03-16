@@ -37,7 +37,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 CategoriesAPI.Map(app);
-CategoriesAPI.Map(app);
 CommentsAPI.Map(app);
 PostsAPI.Map(app);
 RareUsersAPI.Map(app);
