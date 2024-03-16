@@ -10,7 +10,7 @@ namespace GoogleRareBe.API
         public static void Map(WebApplication app)
         {
             /*get comments by post_id*/
-            app.MapGet("/api/comments/bypost", (GoogleRareBeDbContext db, int PostId) =>
+            app.MapGet("/api/getComment/bypost", (GoogleRareBeDbContext db, int PostId) =>
             {
                 var comByPost = db.Comments.Where(c => c.Post_id == PostId).ToList();
                 if (comByPost.Count == 0)
@@ -20,7 +20,7 @@ namespace GoogleRareBe.API
                 return Results.Ok(comByPost);
             });
             /*delete comments by the comments id*/
-            app.MapDelete("/api/comments/{id}", (GoogleRareBeDbContext db, int id) =>
+            app.MapDelete("/api/deleteComment/{id}", (GoogleRareBeDbContext db, int id) =>
             {
                 Comment deleteComment = db.Comments.SingleOrDefault(commentToDelete => commentToDelete.Id == id);
                 if (deleteComment == null)
@@ -32,11 +32,23 @@ namespace GoogleRareBe.API
                 return Results.NoContent();
             });
             /*create comments*/
-            app.MapPost("/api/comments", (GoogleRareBeDbContext db, Comment comment) =>
+            app.MapPost("/api/createComment", (GoogleRareBeDbContext db, Comment comment) =>
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return Results.Created($"/api/users/{comment.Id}", comment);
+            });
+            // update a comment
+            app.MapPut("api/updateComment/{id}", (GoogleRareBeDbContext db, int id, Comment comments) =>
+            {
+                Comment updateComment = db.Comments.SingleOrDefault(c => c.Id == id);
+                if (updateComment == null)
+                {
+                    return Results.NotFound("User not found");
+                }
+                updateComment.Content = comments.Content;
+                db.SaveChanges();
+                return Results.NoContent();
             });
         }
     }
