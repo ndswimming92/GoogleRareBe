@@ -22,6 +22,25 @@ namespace GoogleRareBe.API
                 return db.Tags.ToList();
             });
 
+            // 
+            app.MapPatch("/api/updateTags/{tagId}", (GoogleRareBeDbContext db, int tagId, Tag updateTag) =>
+            {
+                var editedTag = db.Tags.FirstOrDefault(t => t.Id == tagId);
+                if (editedTag == null)
+                {
+                    return Results.NotFound();
+                }
+
+                if (updateTag.Label != null)
+                {
+                    editedTag.Label = updateTag.Label.ToString();
+                }
+
+                return Results.Ok();
+            });
+
+            // Deleting a Tag
+
         }
 
     }
