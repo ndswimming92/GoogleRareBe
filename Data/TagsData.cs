@@ -10,7 +10,6 @@ namespace GoogleRareBe.Data
 		{
 			new Tag { Id = 1, Label = "NewItem1"},
 			new Tag { Id = 2, Label = "NewItem2"},
-
 		};
 	}
 }

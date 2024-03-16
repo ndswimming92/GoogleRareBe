@@ -14,7 +14,7 @@ namespace GoogleRareBe.API
             {
                 db.Tags.Add(addTag);
                 db.SaveChanges();
-                return Results.Ok();
+                return Results.Created($"/api/addTag/{addTag.Id}", addTag);
             });
 
             // Get a Tag
@@ -23,7 +23,7 @@ namespace GoogleRareBe.API
             });
 
             // Updating a Tag
-            app.MapPatch("/api/updateTags/{tagId}", (GoogleRareBeDbContext db, int tagId, Tag updateTag) =>
+            app.MapPut("/api/updateTags/{tagId}", (GoogleRareBeDbContext db, int tagId, Tag updateTag) =>
             {
                 var editedTag = db.Tags.FirstOrDefault(t => t.Id == tagId);
                 if (editedTag == null)
@@ -36,6 +36,7 @@ namespace GoogleRareBe.API
                     editedTag.Label = updateTag.Label.ToString();
                 }
 
+                db.SaveChanges();
                 return Results.Ok();
             });
 
