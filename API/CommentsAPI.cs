@@ -19,7 +19,7 @@ namespace GoogleRareBe.API
                 }
                 return Results.Ok(comByPost);
             });
-            /*delete comments by post_id*/
+            /*delete comments by the comments id*/
             app.MapDelete("/api/comments/{id}", (GoogleRareBeDbContext db, int id) =>
             {
                 Comment deleteComment = db.Comments.SingleOrDefault(commentToDelete => commentToDelete.Id == id);
