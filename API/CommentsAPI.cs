@@ -9,16 +9,25 @@ namespace GoogleRareBe.API
     {
         public static void Map(WebApplication app)
         {
-            /*get comments by post_id*/
-            app.MapGet("/api/getComment/bypost", (GoogleRareBeDbContext db, int PostId) =>
+
+            app.MapGet("/api/comments/{postId}", (GoogleRareBeDbContext db, int postId) =>
             {
-                var comByPost = db.Comments.Where(c => c.Post_id == PostId).ToList();
-                if (comByPost.Count == 0)
+                Post post = db.Posts.SingleOrDefault(p => p.Id == postId);
+                if (post == null)
                 {
-                    return Results.NotFound("No comments found for this post.");
+                    return Results.BadRequest("Invalid data submitted");
                 }
-                return Results.Ok(comByPost);
+                List<Comment> comments = db.Comments
+                                                .Where(c => c.Post_id == postId)
+                                                .OrderByDescending(c => c.Created_on)
+                                                .ToList();
+                if (comments.Count == 0)
+                {
+                    return null;
+                }
+                return Results.Ok(comments);
             });
+
             /*delete comments by the comments id*/
             app.MapDelete("/api/deleteComment/{id}", (GoogleRareBeDbContext db, int id) =>
             {
@@ -50,6 +59,8 @@ namespace GoogleRareBe.API
                 db.SaveChanges();
                 return Results.NoContent();
             });
+
+
         }
     }
 }

@@ -7,5 +7,6 @@
         public int Post_id { get; set; }
         public string Content { get; set; }
         public DateTime Created_on { get; set; }
+
     }
 }
