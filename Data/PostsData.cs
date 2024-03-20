@@ -15,7 +15,7 @@ namespace GoogleRareBe.Data
 				PublicationDate = DateTime.Now,
 				ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQaqJLGCMY6GnWpqz1a9uh0FO8yuFsJ5XTJg&usqp=CAU",
 				Content = "that was amazing! I cant belive he hit that kick.",
-				Approved = true
+				Approved = true,
 			},
 			new Post
 			{

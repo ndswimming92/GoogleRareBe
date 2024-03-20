@@ -1,22 +1,20 @@
 ﻿using System;
-using GoogleRareBe.Models;
+using GoogleRareBe.DTO;
 
 namespace GoogleRareBe.Data
 {
 	public class PostTagData
 	{
-		public static List<PostTag> PostTags = new List<PostTag>
+		public static List<PostTagsDTO> PostTags = new List<PostTagsDTO>
 		{
-			new PostTag
+			new PostTagsDTO
 			{
-				Id = 1,
 				PostId = 1,
 				TagId = 1
 			},
 
-			new PostTag
+			new PostTagsDTO
 			{
-				Id = 2,
 				PostId = 2,
 				TagId = 2
 			},
