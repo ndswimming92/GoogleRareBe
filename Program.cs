@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using GoogleRareBe;
+using GoogleRareBe.DTO;
 using GoogleRareBe.API;
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -43,6 +44,7 @@ RareUsersAPI.Map(app);
 ReactionsAPI.Map(app);
 SubscriptionsAPI.Map(app);
 TagsAPI.Map(app);
+PostTagAPI.Map(app);
 
 app.Run();
 

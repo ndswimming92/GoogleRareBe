@@ -1,4 +1,6 @@
-﻿namespace GoogleRareBe.Models
+﻿using System.Collections;
+
+namespace GoogleRareBe.Models
 {
     public class Post
     {
@@ -10,5 +12,6 @@
         public string ImageUrl { get; set; }
         public string Content { get; set; }
         public bool Approved { get; set; }
+        public ICollection<Tag> Tags { get; set; }
     }
 }

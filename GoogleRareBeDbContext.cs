@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GoogleRareBe.Data;
 using GoogleRareBe.Models;
+using GoogleRareBe.DTO;
 
 namespace GoogleRareBe
 {
@@ -10,7 +11,6 @@ namespace GoogleRareBe
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostReaction> PostReactions { get; set; }
-        public DbSet<PostTag> PostTags { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Tag> Tags { get; set; }
@@ -30,7 +30,6 @@ namespace GoogleRareBe
             modelBuilder.Entity<Reaction>().HasData(ReactionsData.Reactions);
             modelBuilder.Entity<Subscription>().HasData(SubscriptionData.Subscriptions);
             modelBuilder.Entity<Tag>().HasData(TagsData.Tags);
-            modelBuilder.Entity<PostTag>().HasData(PostTagData.PostTags);
         }
     }
 }
