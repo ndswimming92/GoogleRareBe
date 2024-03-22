@@ -25,6 +25,7 @@ namespace GoogleRareBe.API
                 {
                     return null;
                 }
+                db.SaveChanges();
                 return Results.Ok(comments);
             });
 
@@ -50,11 +51,14 @@ namespace GoogleRareBe.API
             // update a comment
             app.MapPut("api/updateComment/{id}", (GoogleRareBeDbContext db, int id, Comment comments) =>
             {
-                Comment updateComment = db.Comments.SingleOrDefault(c => c.Id == id);
+                var updateComment = db.Comments.SingleOrDefault(c => c.Id == id);
                 if (updateComment == null)
                 {
                     return Results.NotFound("User not found");
                 }
+                updateComment.Author_id = comments.Author_id;
+                updateComment.Post_id = comments.Post_id;
+                updateComment.Created_on = comments.Created_on;
                 updateComment.Content = comments.Content;
                 db.SaveChanges();
                 return Results.NoContent();
