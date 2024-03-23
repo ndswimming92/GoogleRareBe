@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GoogleRareBe.Data;
 using GoogleRareBe.Models;
-using GoogleRareBe.DTO;
 
 namespace GoogleRareBe
 {
@@ -30,6 +29,7 @@ namespace GoogleRareBe
             modelBuilder.Entity<Reaction>().HasData(ReactionsData.Reactions);
             modelBuilder.Entity<Subscription>().HasData(SubscriptionData.Subscriptions);
             modelBuilder.Entity<Tag>().HasData(TagsData.Tags);
+          
         }
     }
 }
