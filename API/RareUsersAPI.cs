@@ -30,6 +30,7 @@ namespace GoogleRareBe.API
                 updateUser.email = users.email;
                 updateUser.Active = users.Active;
                 updateUser.IsStaff = users.IsStaff;
+                updateUser.Uid = users.Uid;
                 
                 db.SaveChanges();
                 return Results.NoContent();
